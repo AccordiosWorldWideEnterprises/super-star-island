@@ -1,0 +1,9 @@
+@mixin full-screen() {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin full-screen-bg() {
+  background-size: cover;
+  background-position: center center;
+}

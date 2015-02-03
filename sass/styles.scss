@@ -1,0 +1,133 @@
+// Imports
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/normalize";
+@import "bootstrap/carousel";
+@import "mixins";
+
+
+// Global Styles
+html, body {
+  @include full-screen();
+  text-align: center;
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+  @include full-screen();
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  & > * {
+    flex-shrink: 0;
+  }
+}
+
+header {
+  .logo {
+    margin: 7.5rem 0 1rem;
+    padding: 0 20px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-top: 2.5rem;
+    }
+
+    img {
+      max-height: 80px;
+
+      @media (max-width: $screen-xs-max) {
+        width: 100%;
+        max-height: none;
+      }
+    }
+  }
+
+  .slogan {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+section {
+  .button {
+    display: inline-block;
+    margin: 1em 0;
+    padding: 10px 25px;
+    border: 1px solid white;
+    border-radius: 1000px;
+    color: white;
+    background-color: black;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      color: black;
+      background-color: white;
+    }
+  }
+}
+
+footer {
+  p {
+    margin: 0 20px 20px;
+    font-size: 13px;
+    color: white;
+  }
+}
+
+
+// Carousel Styles
+#carousel {
+  @include full-screen();
+  position: absolute;
+  top: 0; bottom: 0;
+  z-index: -1;
+
+  .carousel-inner {
+    @include full-screen();
+
+    .item {
+      @include full-screen();
+      @include full-screen-bg();
+      position: fixed;
+
+      &:first-child  {background-image: url(../images/superisland-1.jpg);}
+      &:nth-child(2) {background-image: url(../images/superisland-2.jpg);}
+    }
+  }
+}
+
+.carousel-fade {
+  .carousel-inner {
+    .item {
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: .5s;
+    }
+
+    .active {
+      opacity: 1;
+    }
+
+    .active.left,
+    .active.right {
+      left: 0;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .next.left,
+    .prev.right {
+      opacity: 1;
+    }
+  }
+}
